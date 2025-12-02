@@ -69,6 +69,8 @@ print(df.isnull().sum())
 overall_churn = df['Exited'].mean()
 print(f"Overall churn rate: {overall_churn:.2%}")
 
+## Overall churn rate: 20.37%
+
 # ---------------------------
 # 2B. Churn by Geography
 # ---------------------------
