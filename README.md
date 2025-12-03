@@ -56,14 +56,6 @@ Mavenland Bank is facing an unexpected rise in customer churn that is threatenin
 | **High Risk** | 7% | Older (45-65), high balances, multiple products | Premium retention offers, dedicated relationship managers |
 | **Medium Risk** | 10% | Moderate age, balances, product usage | Targeted campaigns, engagement incentives |
 | **Low Risk** | 83% | Younger, fewer products, lower balances | Maintain engagement, monitor for changes |
-
-## 💡 Actionable Recommendations
-
-| **Immediate Priority Actions** | **Strategic Initiatives** |
-|-------------------------------|---------------------------|
-| **German Customer Retention Program** <br> - Dedicated German-speaking relationship managers <br> - Market-specific product bundles <br> - Cultural sensitivity training for staff | **High-Value Customer Protection** <br> - Proactive outreach to high-balance customers <br> - Exclusive loyalty benefits and premium services <br> - Personalized financial reviews |
-| **Age-Specific Retention Strategy** <br> - Target customers aged 50-60 with personalized financial planning <br> - Develop retirement-focused product offerings <br> - High-touch service for senior customers | **Predictive Retention System** <br> - Implement churn risk scoring in CRM <br> - Automated alerts for high-risk customers <br> - Dynamic campaign triggering based on risk tiers |
-| **Product Engagement Initiative** <br> - Cross-selling campaigns for single-product customers <br> - Bundle discounts for multiple products <br> - Frontline staff incentives for product adoption | |
   
 ## 🔍 Exploratory Analysis & Code Snippets
 
@@ -76,7 +68,9 @@ Mavenland Bank is facing an unexpected rise in customer churn that is threatenin
 overall_churn = df['Exited'].mean()
 print(f"Overall churn rate: {overall_churn:.2%}")
 ```
-#### - Overall churn rate is 20.37%, indicating that roughly 1 in 5 customers leave the bank.
+```
+- Overall churn rate is 20.37%, indicating that roughly 1 in 5 customers leave the bank.
+```
 
 ### Churn by Geography
   
@@ -95,7 +89,9 @@ plt.show()
 ```
 <img src="https://github.com/a-paija/Why-Customers-Leave-MavenBank-A-Business-Analytics-Case-Study/blob/main/Images/Churn%20Rate%20by%20Geography.png" alt="Churn Rate by Geography" width="500" height="600"/>
 
-#### - Germany shows the highest churn (~32%), while France and Spain remain lower at ~16%.
+```
+- Germany shows the highest churn (~32%), while France and Spain remain lower at ~16%.
+```
 
 ### Churn by Gender
 ```python
@@ -113,7 +109,9 @@ plt.show()
 ```
 <img src="https://github.com/a-paija/Why-Customers-Leave-MavenBank-A-Business-Analytics-Case-Study/blob/main/Images/Churn%20Rate%20by%20Gender.png" alt="Churn Rate by Gender" width="500" height="600"/>
 
-#### - Female customers churn at ~25%, significantly higher than male customers at ~16.5%.
+```
+- Female customers churn at ~25%, significantly higher than male customers at ~16.5%.
+```
 
 ### Churn by Age Group
 
@@ -135,7 +133,9 @@ plt.show()
 ```
 <img src="https://github.com/a-paija/Why-Customers-Leave-MavenBank-A-Business-Analytics-Case-Study/blob/main/Images/Churn%20Rate%20by%20Age%20Group.png" alt="Churn Rate by Age Group" width="500" height="600"/>
 
-#### - Customers aged 51–60 churn the most (~56%), while ages 18–30 churn the least (~7.5%).
+```
+- Customers aged 51–60 churn the most (~56%), while ages 18–30 churn the least (~7.5%).
+```
 
 ### Churn by Credit Score Group
 
@@ -158,17 +158,11 @@ plt.show()
 ```
 <img src="https://github.com/a-paija/Why-Customers-Leave-MavenBank-A-Business-Analytics-Case-Study/blob/main/Images/Churn%20Rate%20by%20Credit%20Score%20Group.png" alt="Churn Rate by Credit Group" width="500" height="600"/>
 
-#### - Customers with Poor credit show the highest churn (~22%).
-#### - Those with Good scores have the lowest churn (~18.6%).
-#### - Excellent credit users churn slightly more (~20%) than Good.
-
-## Recommended Actions (Across All Analyses)
-
-#### 1. Target churn reduction efforts in Germany, the primary high-risk market.
-#### 2. Launch female-focused engagement strategies to address higher churn among women.
-#### 3. Develop retention programs for older customers, especially those aged 51–60.
-#### 4. Introduce credit-risk-tailored retention programs, particularly for Poor and Excellent credit groups.
-#### 5. Maintain strong engagement with customers aged 18–30, the lowest-risk demographic.
+```
+- Customers with Poor credit show the highest churn (~22%).
+- Those with Good scores have the lowest churn (~18.6%).
+- Excellent credit users churn slightly more (~20%) than Good.
+```
 
 ---
 
@@ -191,7 +185,9 @@ rf_preds = rf_model.predict(X_test)
 print("Random Forest Accuracy:", accuracy_score(y_test, rf_preds))
 print(classification_report(y_test, rf_preds))
 ```
-#### - Observation: 86.7% accuracy, recall 51%, better at identifying churners
+```
+- Observation: 86.7% accuracy, recall 51%, better at identifying churners
+```
 
 ```python
 rf_importance = pd.DataFrame({
@@ -207,16 +203,11 @@ plt.ylabel("Customer Attribute", fontsize=12)
 plt.tight_layout()
 plt.show()
 ```
-<img src="https://github.com/a-paija/Why-Customers-Leave-MavenBank-A-Business-Analytics-Case-Study/blob/main/Images/Top%20Drivers%20of%20Customer%20Churn.png" alt="Churn Rate by Credit Group" width="500" height="600"/>
+<img src="https://github.com/a-paija/Why-Customers-Leave-MavenBank-A-Business-Analytics-Case-Study/blob/main/Images/Top%20Drivers%20of%20Customer%20Churn.png" alt="Churn Rate by Credit Group" width="700" height="800"/>
 
-#### - Observation: Age, NumOfProducts, Balance, Salary are top predictors
-
-## Recommended Actions:
-
-#### 1. Build age-specific retention strategies.
-#### 2. Expand cross-sell opportunities to deepen product usage.
-#### 3. Introduce premium-tier retention benefits for high-balance or high-salary users.
-
+```
+- Observation: Age, NumOfProducts, Balance, Salary are top predictors
+```
 ---
 
 </details>
@@ -233,9 +224,10 @@ results['Prediction'] = rf_model.predict(X_test)
 results['Risk_Tier'] = pd.cut(results['Churn_Prob'], bins=[0,0.40,0.70,1],
                               labels=['Low Risk','Medium Risk','High Risk'])
 ```
-#### - Churn probabilities successfully segmented into Low, Medium, and High Risk tiers.
-#### - Enables targeted retention strategies based on churn likelihood.
-  
+```
+- Churn probabilities successfully segmented into Low, Medium, and High Risk tiers.
+- Enables targeted retention strategies based on churn likelihood.
+```
 ```python
 risk_counts = results['Risk_Tier'].value_counts().sort_index()
 print("Customer Count per Risk Tier:")
@@ -245,27 +237,34 @@ risk_stats = results.groupby('Risk_Tier')[['Age','Balance','NumOfProducts','Esti
 print("\nAverage Customer Profile by Risk Tier:")
 print(risk_stats)
 ```
-### Customer Count per Risk Tier
-#### - Low Risk: 2,473 customers
-#### - Medium Risk: 292 customers
-#### - High Risk: 231 customers
 
+```
+- Low Risk: 2,473 customers
+- Medium Risk: 292 customers
+- High Risk: 231 customers
+```
+### Average Customer Profile by Risk Tier
+
+```
 | **Risk Tier**   | **Age** | **Balance**   | **NumOfProducts** | **EstimatedSalary** |
 |-----------------|---------|----------------|--------------------|----------------------|
 | **Low Risk**    | 36.91   | 71,747.72      | 1.53               | 98,995.27            |
 | **Medium Risk** | 45.86   | 96,124.23      | 1.24               | 97,689.29            |
 | **High Risk**   | 51.02   | 92,645.82      | 1.78               | 104,118.17           |
-
+```
 
 ### Insights
-#### - High Risk customers are older (51+), have higher balances, and more product holdings.
-#### - Medium Risk customers have moderate age but elevated balances.
-#### - Low Risk customers skew younger with fewer products and lower balances.
+```
+- High Risk customers are older (51+), have higher balances, and more product holdings.
+- Medium Risk customers have moderate age but elevated balances.
+- Low Risk customers skew younger with fewer products and lower balances.
+```
 
 ```python
 high_risk_customers = results[results['Risk_Tier'] == 'High Risk']
 print("\nTop 10 High-Risk Customers:")
 print(high_risk_customers.head(10)[['Age','Balance','NumOfProducts','EstimatedSalary']])
+```
 ```
 | **Age** | **Balance**    | **NumOfProducts** | **EstimatedSalary** |
 |--------:|---------------:|-------------------:|---------------------:|
@@ -279,22 +278,43 @@ print(high_risk_customers.head(10)[['Age','Balance','NumOfProducts','EstimatedSa
 | 45      | 129,818.39     | 3                 | 9,217.55             |
 | 45      | 120,591.19     | 1                 | 195,123.94           |
 | 60      | 0.00           | 1                 | 17,978.68            |
-
+```
 
 ### Observation:
-#### - High Risk customers are typically between ages 45–65.
-#### - Many maintain high account balances and show product diversification.
-#### - These accounts represent high-value customers at elevated churn risk.
 
-## Recommended Actions (Across All Segments)
-
-#### 1. Prioritize Medium & High Risk customers for retention outreach.
-#### 2. Build age-targeted programs, especially for customers 45+.
-#### 3. Offer product bundle optimization or financial planning for customers with high balances.
-#### 4. Deploy proactive engagement for customers showing diverse product usage, indicating high lifetime value.
-#### 5. Maintain monitoring and early-warning triggers for rising churn probability.
-
+```
+- High Risk customers are typically between ages 45–65.
+- Many maintain high account balances and show product diversification.
+- These accounts represent high-value customers at elevated churn risk.
+```
 --- 
 
 </details>
 
+## Recommended Actions (Across All Analyses)
+
+```
+1. Target churn reduction efforts in Germany, the primary high-risk market.
+2. Launch female-focused engagement strategies to address higher churn among women.
+3. Develop retention programs for older customers, especially those aged 51–60.
+4. Introduce credit-risk-tailored retention programs, particularly for Poor and Excellent credit groups.
+5. Maintain strong engagement with customers aged 18–30, the lowest-risk demographic.
+6. Prioritize Medium & High Risk customers for retention outreach.
+7. Build age-targeted programs, especially for customers 45+.
+8. Offer product bundle optimization or financial planning for customers with high balances.
+9. Deploy proactive engagement for customers showing diverse product usage, indicating high lifetime value.
+10. Maintain monitoring and early-warning triggers for rising churn probability.
+```
+## 💼 Portfolio Highlights
+
+- **Data Analysis:** Cleaned and merged messy Excel data, handled missing values, and engineered new features.  
+- **Data Visualization:** Created insightful charts highlighting churn trends by geography, age, gender, and credit score.  
+- **Predictive Modeling:** Built and evaluated a Random Forest model with 86.7% accuracy, identifying key churn drivers.  
+- **Business Insights:** Segmented customers into risk tiers and recommended actionable retention strategies.  
+- **Communication:** Presented findings in a structured, visual, and narrative format suitable for stakeholders.
+
+---
+
+This analysis demonstrates a complete end-to-end approach to customer churn management, from data cleaning and visualization to predictive modeling and actionable business insights.
+
+Data Source: [Maven Analytics](https://mavenanalytics.io/data-playground/bank-customer-churn)
