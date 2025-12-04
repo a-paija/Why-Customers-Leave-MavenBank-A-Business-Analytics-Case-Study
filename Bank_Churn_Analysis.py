@@ -69,8 +69,6 @@ print(df.isnull().sum())
 overall_churn = df['Exited'].mean()
 print(f"Overall churn rate: {overall_churn:.2%}")
 
-## Overall churn rate: 20.37%
-
 # ---------------------------
 # 2B. Churn by Geography
 # ---------------------------
@@ -224,6 +222,25 @@ print(risk_stats)
 high_risk_customers = results[results['Risk_Tier'] == 'High Risk']
 print("\nTop 10 High-Risk Customers:")
 print(high_risk_customers.head(10)[['Age','Balance','NumOfProducts','EstimatedSalary']])
+
+
+# --------------------------------------
+# 4D. Build Final Enriched Dataset
+# --------------------------------------
+
+# Merge model outputs back with original customer data
+df_final = df.loc[X_test.index].copy()
+
+# Add predictions, probabilities, and risk tiers
+df_final['Churn_Prob'] = results['Churn_Prob']
+df_final['Prediction'] = results['Prediction']
+df_final['Risk_Tier'] = results['Risk_Tier']
+
+# Save to CSV for Tableau dashboard or future analysis
+df_final.to_csv("customer_risk_tiers.csv", index=False)
+
+print("Export complete: customer_risk_tiers.csv")
+
 
 # Observation:
 # - High Risk customers tend to be older (45–65)
