@@ -237,9 +237,9 @@ df_final['Prediction'] = results['Prediction']
 df_final['Risk_Tier'] = results['Risk_Tier']
 
 # Save to CSV for Tableau dashboard or future analysis
-df_final.to_csv("customer_risk_tiers.csv", index=False)
+df_final.to_csv("Final_Customer_Risk_Data.csv", index=False)
 
-print("Export complete: customer_risk_tiers.csv")
+print("Export complete: Final_Customer_Risk_Data.csv")
 
 
 # Observation:
