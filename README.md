@@ -319,6 +319,6 @@ print(high_risk_customers.head(10)[['Age','Balance','NumOfProducts','EstimatedSa
 
 This project demonstrates a complete end-to-end customer churn analysis workflow—from data cleaning and exploratory analysis to predictive modeling, segmentation, and strategic business recommendations. By combining technical modeling with business insights, this analysis supports Mavenland Bank’s goal of reducing churn by 25% and provides a clear roadmap for targeted retention efforts.
 
-Data Source: [Maven Analytics](https://mavenanalytics.io/data-playground/bank-customer-churn)
-
 [Full Python Script](https://github.com/a-paija/Why-Customers-Leave-MavenBank-A-Business-Analytics-Case-Study/blob/main/Bank_Churn_Analysis.py)
+
+Data Source: [Maven Analytics](https://mavenanalytics.io/data-playground/bank-customer-churn)
