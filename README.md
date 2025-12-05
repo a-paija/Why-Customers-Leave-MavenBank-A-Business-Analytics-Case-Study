@@ -71,6 +71,8 @@ Project Files
 <details>
 <summary><strong>Churn Analysis & Customer Profiles</strong></summary> 
 
+---
+
 ### Overall Churn Rate
 
 ```python
@@ -180,6 +182,8 @@ plt.show()
 <details> 
 <summary><strong>Predictive Modeling & Feature Insights</strong></summary>
 
+---
+
 ```python
 features = ['CreditScore','Geography','Gender','Age','Tenure','Balance',
             'NumOfProducts','HasCrCard','IsActiveMember','EstimatedSalary']
@@ -223,7 +227,9 @@ plt.show()
 
 <details> 
 <summary><strong>Customer Churn Risk Segmentation & High-Risk Profiling</strong></summary>
-  
+
+---
+
 ```python
 results = X_test.copy()
 
@@ -300,6 +306,55 @@ print(high_risk_customers.head(10)[['Age','Balance','NumOfProducts','EstimatedSa
 
 </details>
 
+<details> 
+
+--- 
+
+<summary><strong>Model Performance & Interpretation</strong></summary>
+
+The goal of this project is to predict customer churn so the bank can proactively intervene before customers leave. The initial Random Forest model was trained on 7,000 customers and evaluated on a 3,000-customer test set.
+
+```python
+# Extract actual and predicted values
+y_true = df['Exited']          # actual churn (0 or 1)
+y_pred = df['Prediction']      # model prediction (0 or 1)
+
+# Compute confusion matrix
+cm = confusion_matrix(y_true, y_pred)
+
+# Print confusion matrix and classification report
+print("Confusion Matrix:")
+print(cm)
+print("\nClassification Report:")
+print(classification_report(y_true, y_pred))
+```
+<img src="https://github.com/a-paija/Why-Customers-Leave-MavenBank-A-Business-Analytics-Case-Study/blob/main/Images/Confusion%20Matrix.png" alt="Confusion Matrix" width="500" height="600"/>
+
+```
+Accuracy: 86.7%
+Precision (Churn = 1): 75.7%
+Recall (Churn = 1): 51.4%
+Confusion Matrix:
+True Negatives: 2,288
+False Positives: 101
+False Negatives: 297
+True Positives: 314
+```
+
+- Although the model performs well in terms of accuracy and precision, recall is relatively low. This means the model correctly catches about half of the customers who actually churn. This is a common outcome in churn modeling, especially when churn cases make up a small proportion of the dataset.
+  
+```
+Why Recall Is Lower
+
+1. Several real-world factors limit churn detection in the first iteration of this model:
+2. Imbalanced dataset: Only ~20% of customers churn, making it harder for the model to learn minority patterns.
+3. Limited features: The dataset lacks real behavioral signals like login frequency, complaints, or usage trends.
+4. Baseline model: No threshold tuning, class weighting, or hyperparameter optimization has been applied yet.
+5. Despite this, the model still identifies 314 high-risk churners who can be immediately targeted for retention efforts.
+```
+
+</details>
+
 ## Recommended Actions (Across All Analyses)
 
 ```
@@ -314,6 +369,7 @@ print(high_risk_customers.head(10)[['Age','Balance','NumOfProducts','EstimatedSa
 9. Deploy proactive engagement for customers showing diverse product usage, indicating high lifetime value.
 10. Maintain monitoring and early-warning triggers for rising churn probability.
 ```
+
 ## 💼 Portfolio Highlights
 
 - **Data Analysis:** Cleaned and merged messy Excel data, handled missing values, and engineered new features.  
