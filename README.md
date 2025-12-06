@@ -1,7 +1,7 @@
 # Customer Churn Analysis & Retention Strategy
 
-## 📊 Business Case Scenario
-Mavenland Bank is facing an unexpected rise in customer churn that is threatening quarterly revenue targets. The executive team from Product, Marketing, and Customer Success departments have convened an emergency meeting and need your analytical expertise to understand and address this critical issue.
+## 📊 Problem Statement: 
+Customer churn is a major concern for financial institutions, as retaining existing clients is significantly more cost-effective than acquiring new ones. Predicting which customers are at risk of leaving allows banks to take timely actions to prevent churn and protect revenue.
 
 **Business Objective:** Reduce customer churn by 25% within two quarters to stabilize quarterly revenue targets.
 
